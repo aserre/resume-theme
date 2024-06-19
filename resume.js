@@ -26,16 +26,64 @@ export default function Resume(resume, css) {
         <meta charset="utf-8" />
         ${Meta(resume.basics)}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans:400,600&display=swap" />
+        <link
+          href="favicons/light-16.png"
+          sizes="16x16"
+          type="image/png"
+          rel="shortcut icon"
+          media="(prefers-color-scheme: light)"
+        />
+        <link
+          href="favicons/light-32.png"
+          sizes="32x32"
+          type="image/png"
+          rel="shortcut icon"
+          media="(prefers-color-scheme: light)"
+        />
+        <link
+          href="favicons/light-96.png"
+          sizes="96x96"
+          type="image/png"
+          rel="shortcut icon"
+          media="(prefers-color-scheme: light)"
+        />
+        <link
+          href="favicons/dark-16.png"
+          sizes="16x16"
+          type="image/png"
+          rel="shortcut icon"
+          media="(prefers-color-scheme: dark)"
+        />
+        <link
+          href="favicons/dark-32.png"
+          sizes="32x32"
+          type="image/png"
+          rel="shortcut icon"
+          media="(prefers-color-scheme: dark)"
+        />
+        <link
+          href="favicons/dark-96.png"
+          sizes="96x96"
+          type="image/png"
+          rel="shortcut icon"
+          media="(prefers-color-scheme: dark)"
+        />
         <style>
           ${css}
         </style>
       </head>
       <body>
-        ${Header(resume.basics)} ${Work(resume.work)} ${Volunteer(resume.volunteer)} ${Education(resume.education)}
-        ${Projects(resume.projects)} ${Awards(resume.awards)} ${Certificates(resume.certificates)}
-        ${Publications(resume.publications)} ${Skills(resume.skills)} ${Languages(resume.languages)}
-        ${Interests(resume.interests)} ${References(resume.references)}
+        ${Header(resume.basics)}
+        <div class="content">
+          <div class="main">${Work(resume.work)}</div>
+          <div class="side">
+            ${Volunteer(resume.volunteer)} ${Education(resume.education)} ${Projects(resume.projects)}
+            ${Awards(resume.awards)} ${Certificates(resume.certificates)} ${Publications(resume.publications)}
+            ${Skills(resume.skills)} ${Languages(resume.languages)} ${Interests(resume.interests)}
+            ${References(resume.references)}
+          </div>
+        </div>
       </body>
     </html>`
 }

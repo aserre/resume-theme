@@ -19,11 +19,11 @@ export default function Education(education = []) {
               <article>
                 <header>
                   <h4>${Link(url, institution)}</h4>
-                  <div class="meta">
-                    ${area && html`<strong>${area}</strong>`}
-                    ${startDate && html`<div>${Duration(startDate, endDate)}</div>`}
-                  </div>
                 </header>
+                <div>
+                  <h5>${area}</h5>
+                  ${startDate && html`<div class="meta">${Duration(startDate, endDate)}</div>`}
+                </div>
                 ${studyType && markdown(studyType)}
                 ${courses.length > 0 &&
                 html`

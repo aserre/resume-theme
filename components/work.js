@@ -14,7 +14,7 @@ import Link from './link.js'
 export default function Work(work = []) {
   const nestedWork = work.reduce((acc, { description, name, url, ...rest }) => {
     const prev = acc[acc.length - 1]
-    if (prev && prev.name === name && prev.description === description && prev.url === url) prev.items.push(rest)
+    if (prev && prev.name === name) prev.items.push(rest)
     else acc.push({ description, name, url, items: [rest] })
     return acc
   }, /** @type {NestedWork[]} */ ([]))
@@ -23,7 +23,7 @@ export default function Work(work = []) {
     work.length > 0 &&
     html`
       <section id="work">
-        <h3>Work</h3>
+        <h3>Work Experience</h3>
         <div class="stack">
           ${nestedWork.map(
             ({ description, name, url, items = [] }) => html`

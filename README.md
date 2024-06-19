@@ -27,6 +27,10 @@ npm install jsonresume-theme-even
 
 ## Usage
 
+```console
+vite build ; node bin/cli.js < ../resume/resume.json > ../resume/index.html
+```
+
 ### With resume-cli
 
 [resume-cli](https://github.com/jsonresume/resume-cli) comes with _Even_ and uses it by default, so you don't even (pun intended) need to install the theme yourself:
