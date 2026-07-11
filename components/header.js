@@ -1,7 +1,7 @@
 import html from '../utils/html.js'
-import markdown from '../utils/markdown.js'
 import Icon from './icon.js'
 import Link from './link.js'
+import Summary from './summary.js'
 
 /**
  * @param {string} countryCode
@@ -20,44 +20,43 @@ export default function Header(basics = {}) {
   return html`
     <header class="header">
       ${image && html`<img src="${image}" alt="" />`}
-      <div class="main">
-        ${name && html`<h1>${name}</h1>`} ${label && html`<h2>${label}</h2>`}
-        <ul class="icon-list">
-          ${location?.city &&
-          html`
-            <li>
-              ${Icon('map-pin')}
-              <a href="https://www.google.com/maps/place/${location.city}">
-                ${location.city}${location.countryCode && html`, ${formatCountry(location.countryCode)}`}
-              </a>
-            </li>
-          `}
-          ${email &&
-          html`
-            <li>
-              ${Icon('mail')}
-              <a href="mailto:${email}">${email}</a>
-            </li>
-          `}
-          ${phone &&
-          html`
-            <li>
-              ${Icon('phone')}
-              <a href="tel:${phone.replace(/\s/g, '')}">${phone}</a>
-            </li>
-          `}
-          ${url && html`<li>${Icon('user')} ${Link(url)}</li>`}
-          ${profiles.map(
-            ({ network, url, username }) => html`
-              <li>
-                ${network && Icon(network, 'user')} ${Link(url, username)}
-                ${network && html`<span class="network">(${network})</span>`}
+      <div class="main">${Summary(summary)}</div>
+      <div class="${summary ? 'side' : 'main'}">
+        <section id="identity">
+          ${name && html`<h1>${Link(url, name)}</h1>`} ${label && html`<h2>${label}</h2>`}
+          <ul class="icon-list">
+            ${location?.city &&
+            html`
+              <li class="title tag">
+                ${Icon('compass')}
+                <div>${location.city}${location.countryCode && html`, ${formatCountry(location.countryCode)}`}</div>
               </li>
-            `,
-          )}
-        </ul>
+            `}
+            ${email &&
+            html`
+              <li class="title tag">
+                ${Icon('mail')}
+                <a href="mailto:${email}">${email}</a>
+              </li>
+            `}
+            ${phone &&
+            html`
+              <li class="title">
+                ${Icon('phone')}
+                <a href="tel:${phone.replace(/\s/g, '')}">${phone}</a>
+              </li>
+            `}
+            ${profiles.map(
+              ({ network, url, username }) => html`
+                <li class="title">
+                  ${network && Icon(network, 'user')} ${Link(url, username)}
+                  ${network && html`<span class="network">(${network})</span>`}
+                </li>
+              `,
+            )}
+          </ul>
+        </section>
       </div>
-      ${summary && html`<article class="side summary">${markdown(summary)}</article>`}
     </header>
   `
 }

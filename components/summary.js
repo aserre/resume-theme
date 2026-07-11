@@ -10,6 +10,7 @@ export default function Summary(summary = '') {
     summary &&
     html`
       <section id="summary">
+        <h3>Summary</h3>
         <article class="summary">${markdown(summary)}</article>
       </section>
     `

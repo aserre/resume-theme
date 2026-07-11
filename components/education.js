@@ -17,12 +17,12 @@ export default function Education(education = []) {
           ${education.map(
             ({ area, courses = [], institution, startDate, endDate, studyType, url }) => html`
               <article>
-                <header>
+                <header class="title">
                   <h4>${Link(url, institution)}</h4>
+                  ${startDate && html`${Duration(startDate, endDate, true)}`}
                 </header>
-                <div>
+                <div class="title">
                   <h5>${area}</h5>
-                  ${startDate && html`<div class="meta">${Duration(startDate, endDate)}</div>`}
                 </div>
                 ${studyType && markdown(studyType)}
                 ${courses.length > 0 &&

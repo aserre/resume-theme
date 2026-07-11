@@ -30,23 +30,21 @@ export default function Work(work = []) {
               <article>
                 <header>
                   <h4>${Link(url, name)}</h4>
-                  <div class="meta">${description && html`<div>${description}</div>`}</div>
+                  <div>${description && html`<div>${description}</div>`}</div>
                 </header>
                 <div class="timeline">
                   ${items.map(
                     ({ highlights = [], location, position, startDate, endDate, summary }) => html`
                       <div>
-                        <div>
+                        <div class="title">
                           <h5>${position}</h5>
-                          <div class="meta">
-                            ${startDate && html`<div>${Duration(startDate, endDate)}</div>`}
-                            ${location && html`<div>${location}</div>`}
-                          </div>
+                          ${startDate && html`${Duration(startDate, endDate)}`}
+                          ${location && html`<div class="tag">${location}</div>`}
                         </div>
-                        ${summary && markdown(summary)}
+                        <div class="meta">${summary && markdown(summary)}</div>
                         ${highlights.length > 0 &&
                         html`
-                          <ul>
+                          <ul class="highlights">
                             ${highlights.map(highlight => html`<li>${markdown(highlight)}</li>`)}
                           </ul>
                         `}

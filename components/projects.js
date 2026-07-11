@@ -1,6 +1,7 @@
 import html from '../utils/html.js'
 import markdown from '../utils/markdown.js'
 import Duration from './duration.js'
+import Icon from './icon.js'
 import Link from './link.js'
 
 /**
@@ -35,19 +36,22 @@ export default function Projects(projects = []) {
             }) => html`
               <article>
                 <header>
-                  <h4>${Link(url, name)}</h4>
-                  <div class="meta">
+                  <div class="title">
+                    <h4>${Link(url, name)}</h4>
+                    ${!url && Icon('lock')}
+                  </div>
+                  <div class="title">
                     <div>
-                      ${roles.length > 0 && html`<strong>${formatRoles(roles)}</strong>`}
+                      ${type && html`<h5>${type}</h5>`} ${roles.length > 0 && html`<h5>${formatRoles(roles)}</h5>`}
                       ${entity && html`at <strong>${entity}</strong>`}
                     </div>
-                    ${startDate && html`<div>${Duration(startDate, endDate)}</div>`} ${type && html`<div>${type}</div>`}
+                    ${startDate && html`${Duration(startDate, endDate, true)}`}
                   </div>
                 </header>
                 ${description && markdown(description)}
                 ${highlights.length > 0 &&
                 html`
-                  <ul>
+                  <ul class="highlights">
                     ${highlights.map(highlight => html`<li>${markdown(highlight)}</li>`)}
                   </ul>
                 `}

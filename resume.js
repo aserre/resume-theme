@@ -26,7 +26,29 @@ export default function Resume(resume, css) {
         <meta charset="utf-8" />
         ${Meta(resume.basics)}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans:400,600&display=swap" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Google+Sans:ital,wght@0,100..800;1,100..800&display=swap"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Google+Sans+Display:ital,wght@0,100..800;1,100..800&display=swap"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Google+Sans+Text:ital,wght@0,100..800;1,100..800&display=swap"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Product+Sans:ital,wght@0,100..800;1,100..800&display=swap"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet"
+        />
         <link
           href="favicons/light-16.png"
           sizes="16x16"
@@ -78,7 +100,7 @@ export default function Resume(resume, css) {
         <div class="content">
           <div class="main">${Work(resume.work)}</div>
           <div class="side">
-            ${Volunteer(resume.volunteer)} ${Education(resume.education)} ${Projects(resume.projects)}
+            ${Volunteer(resume.volunteer)} ${Projects(resume.projects)} ${Education(resume.education)}
             ${Awards(resume.awards)} ${Certificates(resume.certificates)} ${Publications(resume.publications)}
             ${Skills(resume.skills)} ${Languages(resume.languages)} ${Interests(resume.interests)}
             ${References(resume.references)}

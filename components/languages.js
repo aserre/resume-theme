@@ -12,13 +12,7 @@ export default function Languages(languages = []) {
         <h3>Languages</h3>
         <div class="grid-list">
           ${languages.map(
-            ({ fluency, language }) =>
-              html`<div>
-                ${language && html`<h4>${language}</h4>`}
-                <ul class="tag-list">
-                  <li>${fluency}</li>
-                </ul>
-              </div>`,
+            ({ fluency }) => html`<div class="title">${fluency && html`<div class="tag">${fluency}</div>`}</div>`,
           )}
         </div>
       </section>

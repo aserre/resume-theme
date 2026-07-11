@@ -14,11 +14,11 @@ export default function Interests(interests = []) {
           ${interests.map(
             ({ keywords = [], name }) => html`
               <div>
-                ${name && html`<h4>${name}</h4>`}
+                ${name && html`<h5>${name}</h5>`}
                 ${keywords.length > 0 &&
                 html`
                   <ul class="tag-list">
-                    ${keywords.map(keyword => html`<li>${keyword}</li>`)}
+                    ${keywords.map(keyword => html`<li class="tag">${keyword}</li>`)}
                   </ul>
                 `}
               </div>
